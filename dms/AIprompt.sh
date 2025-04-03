@@ -15,11 +15,11 @@ while true; do
 	[ -z "$prompt" ] && exit;
 	
 	history="$history\nUser: $prompt"
-	echo -e "User: $prompt\n" >> "$filename"
+	echo -e "\tUser: $prompt\n" >> "$filename"
 
 	response=$(echo -e "$history" | ollama run "$model")
 	history="$history\nAI: $response"
-	echo -e "AI: $response\n" >> "$filename"
+	echo -e "\tAI: $response\n" >> "$filename"
 
 	echo -e "$response\n\nPRESS ENTER" | fold -s -w 60 | dmenu -l 10 -p "AI:"
 
